@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: task12-observability
+      MODEL_NAME: demo-model
+      TENANT_BUDGET_USD: "5.00"
