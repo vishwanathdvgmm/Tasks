@@ -1,0 +1,19 @@
+[project]
+name = "task11-llm-evaluation-guardrails"
+version = "0.1.0"
+description = "RAG evaluation, prompt-injection checks, and PII redaction starter"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.7", "pytest>=8.0"]
+
+[project.optional-dependencies]
+eval = ["ragas>=0.2", "datasets>=3.0"]
+pii = ["presidio-analyzer>=2.2.354", "presidio-anonymizer>=2.2.354", "spacy>=3.7"]
+dev = ["ruff>=0.6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
