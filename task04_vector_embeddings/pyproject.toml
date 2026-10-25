@@ -1,0 +1,29 @@
+[project]
+name = "task04-vector-embeddings"
+version = "0.1.0"
+description = "Vector embeddings, similarity metrics, batching, retries, and Redis caching"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "redis>=5.0",
+  "openai>=1.40",
+]
+
+[project.optional-dependencies]
+local = ["sentence-transformers>=3.0", "torch>=2.2"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+embeddings-demo = "vector_embeddings.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vector_embeddings"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
