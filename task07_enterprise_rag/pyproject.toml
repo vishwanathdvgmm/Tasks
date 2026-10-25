@@ -1,0 +1,29 @@
+[project]
+name = "task07-enterprise-rag"
+version = "0.1.0"
+description = "Modular enterprise RAG pipeline with query transformation, hybrid retrieval, grounded generation, and citations"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic>=2.8.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.2.0", "pgvector>=0.3.0"]
+test = ["pytest>=8.3.0", "httpx>=0.27.0"]
+
+[project.scripts]
+task07 = "task07_rag.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/task07_rag"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
